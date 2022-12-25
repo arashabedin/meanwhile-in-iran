@@ -1,33 +1,84 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { graphql, HeadFC, PageProps } from "gatsby"
+import Img from "gatsby-image"
 
 const pageStyles = {
   color: "#232129",
   padding: 96,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+  backgroundColor: "#000"
 }
 const headingStyles = {
+  fontSize: 40,
   marginTop: 0,
   marginBottom: 64,
-  maxWidth: 320,
+  maxWidth: 480,
+  backgroundColor: '#fff',
+  color: '#000',
+  padding: '0 20px'
 }
-const headingAccentStyles = {
-  color: "#e61a0b",
+const subHeadingStyles = {
+  fontSize: 24,
+  marginTop: 0,
+  marginBottom: 64,
+  maxWidth: 500,
+  // backgroundColor: '#fff',
+  color: '#fff',
+  padding: '0 20px',
+  lineHeight: '34px'
+}
+const dayStyles = {
+  backgroundColor: '#fff',
+  color: '#000',
+  padding: '0 5px',
+  margin: '0 2px'
+}
+const imgStyles = {
+  width: '100%',
+  maxWidth: 800
 }
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<PageProps> = ({ data }) => {
+  const edges = data?.allFile?.edges?.sort((a, b) => 0.5 - Math.random());
+  const fromDate = new Date('2022-09-16');
+  const current = new Date();
+  const difference = current.getTime() - fromDate.getTime();
+  const totalDays = Math.ceil(difference / (1000 * 3600 * 24));
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
         Meanwhile in Iran
         <br />
-        <span style={headingAccentStyles}>—Under construction</span>
       </h1>
-   
+      <div style={subHeadingStyles}>
+        All images have been captured in the ingoing revolution in Iran during the recent <span style={dayStyles}>{totalDays}</span> days.
+      </div>
+      {edges.map((edge, index) => {
+        return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} />
+      })}
     </main>
   )
 }
 
 export default IndexPage
+export const indexQuery = graphql`
+query AssetsPhotos {
+  allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, dir: {regex: "/images/"}}) {
+    edges {
+      node {
+        id
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+}
+`
 
 export const Head: HeadFC = () => <title>Home Page</title>
