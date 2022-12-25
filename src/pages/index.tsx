@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 const pageStyles = {
   color: "#232129",
-  padding: 96,
+  padding: "20px 0",
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
   display: "flex",
   alignItems: "center",
