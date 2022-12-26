@@ -38,7 +38,7 @@ const dayStyles = {
 }
 const imgStyles = {
   width: '100%',
-  maxWidth: 800
+  maxWidth: 630
 }
 
 const IndexPage: React.FC<PageProps> = ({ data }) => {
