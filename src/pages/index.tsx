@@ -56,7 +56,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       <div style={subHeadingStyles}>
         All images have been captured in Iran during the recent <span style={dayStyles}>{totalDays}</span> days, in the ingoing revolution.
       </div>
-      {edges.map((edge, index) => {
+      {edges.map((edge:any, index:number) => {
         return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} />
       })}
     </main>
@@ -81,4 +81,4 @@ query AssetsPhotos {
 }
 `
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Meanwhile in Iran</title>
