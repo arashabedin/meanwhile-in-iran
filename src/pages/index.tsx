@@ -66,7 +66,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
       </h1>
       <Link to="https://github.com/arashabedin/meanwhile-in-iran" style={gitLinkStyles} ><span>Collaborate on Git</span><img src={gitIcon} style={gitIconStyles} /></Link>
       <div style={subHeadingStyles}>
-        All images have been captured in Iran during the recent <span style={dayStyles}>{totalDays}</span> days, in the ingoing revolution.
+        All images have been captured in Iran during the recent <span style={dayStyles}>{totalDays}</span> days, during the ongoing revolution.
       </div>
       {edges.map((edge: any, index: number) => {
         return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} alt={"Meanwhile in Iran - Women Life Freedom"} />
