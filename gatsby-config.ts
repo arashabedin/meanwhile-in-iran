@@ -12,7 +12,7 @@ const config: GatsbyConfig = {
   plugins: ["gatsby-plugin-sass", {
     resolve: 'gatsby-plugin-google-analytics',
     options: {
-      "trackingId": "notaddedyet"
+      "trackingId": "G-VL82026XXT"
     }
   }, "gatsby-plugin-sitemap", "gatsby-plugin-mdx", {
     resolve: 'gatsby-source-filesystem',
