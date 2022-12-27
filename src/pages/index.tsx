@@ -57,7 +57,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
         All images have been captured in Iran during the recent <span style={dayStyles}>{totalDays}</span> days, in the ingoing revolution.
       </div>
       {edges.map((edge:any, index:number) => {
-        return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} />
+        return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} alt={"Meanwhile in Iran - Women Life Freedom"} />
       })}
     </main>
   )
