@@ -1,7 +1,7 @@
 import * as React from "react"
-import { graphql, HeadFC, PageProps } from "gatsby"
+import { graphql, HeadFC, Link, PageProps } from "gatsby"
 import Img from "gatsby-image"
-
+import gitIcon from "../icons/git.png";
 const pageStyles = {
   color: "#232129",
   padding: "20px 0",
@@ -14,7 +14,7 @@ const pageStyles = {
 const headingStyles = {
   fontSize: 40,
   marginTop: 0,
-  marginBottom: 64,
+  marginBottom: 40,
   maxWidth: 480,
   backgroundColor: '#fff',
   color: '#000',
@@ -23,7 +23,7 @@ const headingStyles = {
 const subHeadingStyles = {
   fontSize: 24,
   marginTop: 0,
-  marginBottom: 64,
+  marginBottom: 40,
   maxWidth: 500,
   // backgroundColor: '#fff',
   color: '#fff',
@@ -40,6 +40,17 @@ const imgStyles = {
   width: '100%',
   maxWidth: 630
 }
+const gitIconStyles = {
+  width: 40,
+  marginLeft:20
+}
+const gitLinkStyles = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: 40,
+  color: "#fff"
+}
 
 const IndexPage: React.FC<PageProps> = ({ data }) => {
   const edges = data?.allFile?.edges?.sort((a, b) => 0.5 - Math.random());
@@ -53,10 +64,11 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
         Meanwhile in Iran
         <br />
       </h1>
+      <Link to="https://github.com/arashabedin/meanwhile-in-iran" style={gitLinkStyles} ><span>Collaborate on Git</span><img src={gitIcon} style={gitIconStyles} /></Link>
       <div style={subHeadingStyles}>
         All images have been captured in Iran during the recent <span style={dayStyles}>{totalDays}</span> days, in the ingoing revolution.
       </div>
-      {edges.map((edge:any, index:number) => {
+      {edges.map((edge: any, index: number) => {
         return <Img style={imgStyles} key={index} fluid={edge.node.childImageSharp.fluid} alt={"Meanwhile in Iran - Women Life Freedom"} />
       })}
     </main>
